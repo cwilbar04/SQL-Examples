@@ -12,9 +12,27 @@ create table ##temptable(
 	col2 int NULL
 	)
 
-insert into ##temptable (
+insert into ##temptable 
+	SELECT * from dbtable
+;
 
-)
+insert into #temptable values ( )
+
+--note: need nvarchar instead of varchar if unicode
+bulk insert #temptable 
+from 'C:\temp\commaseparatedwithcolumnnamesunicode.txt'	
+with (FIELDTERMINATOR =',',rowterminator='\n',firstrow=1, DATAFILETYPE='widechar') 
+
+
+bulk insert #temptable
+from 'C:\temp\tabdelimintednocolumnnames.txt'	
+with (FIELDTERMINATOR ='\t',rowterminator='\n',firstrow=0)
+
+bulk insert #temptable 
+from 'C:\temp\csvwithcolumnnames'	
+with (FIELDTERMINATOR ='\t')
+
+
 
 --Remove whitespace and commas, replace missing with specific text
 
