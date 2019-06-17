@@ -16,13 +16,13 @@ insert into ##temptable
 	SELECT * from dbtable
 ;
 
-insert into #temptable values ( )
+insert into #temptable (columns) 
+	values ( )
 
 --note: need nvarchar instead of varchar if unicode
 bulk insert #temptable 
 from 'C:\temp\commaseparatedwithcolumnnamesunicode.txt'	
 with (FIELDTERMINATOR =',',rowterminator='\n',firstrow=1, DATAFILETYPE='widechar') 
-
 
 bulk insert #temptable
 from 'C:\temp\tabdelimintednocolumnnames.txt'	
