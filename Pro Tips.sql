@@ -17,7 +17,8 @@ insert into ##temptable
 ;
 
 insert into #temptable (columns) 
-	values ( )
+	values ( ), ( ) 
+;
 
 --note: need nvarchar instead of varchar if unicode
 bulk insert #temptable 
