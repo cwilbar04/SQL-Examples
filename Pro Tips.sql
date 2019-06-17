@@ -31,6 +31,9 @@ dateadd(hh,-6,dateadd(s,[DATE_TIME_CREATED],'19700101')))
 -- Convert datetime to yyyymmdd
 CONVERT(varchar(8), GETDATE(), 112) 
 
+-- Split in to Date yyyymmdd and Time 
+CONVERT(CHAR(10), E.EXAM_DATE, 112) AS [DCM_DATE], REPLACE(CONVERT(CHAR(8), E.EXAM_DATE, 114), ':', '') AS [DCM_TIME]
+
 
 
 --Summarize data by Week
